@@ -17,10 +17,8 @@ body {
   background-size: auto;
   overflow: auto;
 }
-
 .input {
-  /* margin: 5px; */
-
+  margin: 5px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -28,6 +26,14 @@ body {
   background-size: auto;
 }
 
+/* 
+.general_recipe_info{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-size: auto;
+}
 .ingredients {
   display: flex;
   flex-direction: row;
@@ -35,12 +41,13 @@ body {
   justify-content: center;
   background-size: auto;
 }
+} */
 
 .input_recipe {
   resize: none;
   margin: 10px;
   justify-content: left;
-}
+} 
 
 #footer {
   position: absolute;

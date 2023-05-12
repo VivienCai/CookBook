@@ -11,9 +11,9 @@
     <a href="./index.html">back</a>
     <h1>New Recipe</h1>
 
-    <div class="input">
-      <form>
-        <!-- WE NEED TO ADD AN ACTION [Form Handler], <form action="/form_handler.php"> -->
+    <form>
+      <!-- WE NEED TO ADD AN ACTION [Form Handler], <form action="/form_handler.php"> -->
+      <div class="input">
         <textarea
           class="input_recipe"
           id="recipe_title"
@@ -30,7 +30,7 @@
           cols="100"
           placeholder="Recipe Info (Prep Time, Cook Time, Servings...)"
         ></textarea>
-        <div class="ingredients">
+        <div>
           <textarea
             class="input_recipe"
             id="ingredient_list"
@@ -48,10 +48,9 @@
             placeholder="Directions"
           ></textarea>
         </div>
-
         <input type="submit" id="submit_button" value="All Done!" />
-      </form>
-    </div>
+      </div>
+    </form>
   </body>
 
   <footer id="footer">
