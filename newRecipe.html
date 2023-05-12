@@ -12,38 +12,45 @@
     <h1>New Recipe</h1>
 
     <div class="input">
-      <textarea
-        class="input_recipe"
-        id="recipe_title"
-        rows="1"
-        cols="30"
-        placeholder="Recipe Name"
-      ></textarea>
-      <textarea
-        class="input_recipe"
-        id="recipe_info"
-        rows="4"
-        cols="100"
-        placeholder="Recipe Info (Prep Time, Cook Time, Servings...)"
-      ></textarea>
-      <div class="ingredients">
-      <textarea
-        class="input_recipe"
-        id="ingredient_list"
-        rows="25"
-        cols="20"
-        placeholder="Ingredients"
-      ></textarea>
-      <textarea
-        class="input_recipe"
-        id="paste_link"
-        rows="25"
-        cols="75"
-        placeholder="Directions"
-      ></textarea>
-      </div>
+      <form>
+        <!-- WE NEED TO ADD AN ACTION [Form Handler], <form action="/form_handler.php"> -->
+        <textarea
+          class="input_recipe"
+          id="recipe_title"
+          name="recipe_title_name"
+          rows="1"
+          cols="30"
+          placeholder="Recipe Name"
+        ></textarea>
+        <textarea
+          class="input_recipe"
+          id="recipe_info"
+          name="recipe_info_name"
+          rows="4"
+          cols="100"
+          placeholder="Recipe Info (Prep Time, Cook Time, Servings...)"
+        ></textarea>
+        <div class="ingredients">
+          <textarea
+            class="input_recipe"
+            id="ingredient_list"
+            name="ingredient_list_name"
+            rows="25"
+            cols="20"
+            placeholder="Ingredients"
+          ></textarea>
+          <textarea
+            class="input_recipe"
+            id="paste_link"
+            name="paste_link_name"
+            rows="25"
+            cols="75"
+            placeholder="Directions"
+          ></textarea>
+        </div>
 
-      </textarea>
+        <input type="submit" id="submit_button" value="All Done!" />
+      </form>
     </div>
   </body>
 
