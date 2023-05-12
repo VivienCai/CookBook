@@ -41,14 +41,19 @@
           ></textarea>
           <textarea
             class="input_recipe"
-            id="paste_link"
-            name="paste_link_name"
+            id="directions"
+            name="directions_name"
             rows="25"
             cols="75"
             placeholder="Directions"
           ></textarea>
         </div>
-        <input type="submit" id="submit_button" value="All Done!" />
+        <input
+          type="button"
+          id="submit_button"
+          value="All Done!"
+          onclick="return submit_complete()"
+        />
       </div>
     </form>
   </body>
@@ -56,4 +61,5 @@
   <footer id="footer">
     <p>Copyright &copy;2023 Vivien Cai and Athithiya Mohanakumar</p>
   </footer>
+  <script src="script.js"></script>
 </html>
