@@ -8,17 +8,11 @@
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <title>My Recipes</title>
   </head>
-  <body>
+  <body onload="load_my_recipes()">
     <a href="./index.html">Home</a>
     <a href="./newRecipe.html">Add a New Recipe</a>
     <h1>My Recipes</h1>
-    <div id="recipe_list">
-      <button class="collapsible">Recipe 1</button>
-      <div class="content">
-        <p>some contnet</p>
-      </div>
-      <p>hello</p>
-    </div>
+    <div id="recipe_list"></div>
   </body>
-  <script src="scripts/recipe_list.js"></script>
+  <script src="scripts/add_recipe.js"></script>
 </html>

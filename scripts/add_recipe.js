@@ -3,44 +3,11 @@ const recipeInfoEl = document.getElementById("recipe_info");
 const ingredientListEl = document.getElementById("ingredient_list");
 const directionsEl = document.getElementById("directions");
 const submitBtnEl = document.getElementById("submit_button");
-var coll = document.getElementsByClassName("collapsible");
-
-function render(data) {
-  console.log("started render");
-  // var new_recipe_html ='<button class="collapsible">'+data.recipe_title+'</button><div class="content"><p>'+data.recipe_info+'</p><p>'+data.ingredient_list+'</p><p>'+data.directions+'</p></div>';
-
-  const single_recipe = document.createElement("div");
-
-  const buttontesting1 = document.createElement("button");
-  buttontesting1.setAttribute("class", "collapsible");
-  console.log(buttontesting1.classList);
-  buttontesting1.textContent = recipe_title.value;
-
-  const recipetestinginfo = document.createElement("div");
-  recipetestinginfo.setAttribute("class", "content");
-
-  const r_info = document.createElement("textarea");
-  const r_ingredients = document.createElement("textarea");
-  const r_directions = document.createElement("textarea");
-  r_info.textContent = recipe_info.value;
-  r_ingredients.textContent = ingredient_list.value;
-  r_directions.textContent = directions.value;
-
-  recipetestinginfo.appendChild(r_info);
-  recipetestinginfo.appendChild(r_ingredients);
-  recipetestinginfo.appendChild(r_directions);
-
-  single_recipe.appendChild(buttontesting1);
-  single_recipe.appendChild(recipetestinginfo);
-
-  document.getElementById("div1").append(single_recipe);
-
-  console.log("finifhsed render");
-}
+var recipes_display = document.getElementsByClassName("collapsible");
+var recipe = [];
 
 $(function () {
   console.log("ready function called");
-  var recipe = [];
   console.log("recipe length: " + recipe.length);
 
   if (!localStorage.recipe_data) {
@@ -49,15 +16,9 @@ $(function () {
     recipe = JSON.parse(localStorage.recipe_data);
   }
 
-  for (var i = 0; i < recipe.length; i++) {
-    console.log("i am in the for loop. heehe ");
-    console.log("recipe length: " + recipe.length);
-    render(recipe[i]);
-  }
-  console.log("The DOM is now loaded and can be manipulated.");
-
+  //THIS SHOULD NOT HAPPEN ON MY RECIPES PAGE!! STAY ON NEW RECIPE PAGE
   $("#submit_button").on("click", function () {
-    console.log("hello1");
+    console.log("entering submit button click function...");
     alert("Recipe added!");
 
     var add_recipe = {
@@ -69,59 +30,71 @@ $(function () {
     recipe.push(add_recipe);
     console.log("recipe length: " + recipe.length);
     localStorage.recipe_data = JSON.stringify(recipe);
-    render(add_recipe);
+    // render(add_recipe); //Might be unecessary... it will render alongside everything else later.
 
     recipeTitleEl.value = "";
     recipeInfoEl.value = "";
     ingredientListEl.value = "";
     directionsEl.value = "";
 
-    console.log("reset values");
-    console.log("collapsible length anrya" + coll.length);
-
-    for (var i = 0; i < coll.length; i++) {
-      coll[i].addEventListener("click", function () {
-        console.log(coll.length);
-        console.log("clicked!!!!!");
-        var content = this.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      });
-    }
+    console.log("reset values. All done on New Recipe Page!!!!");
   });
 });
-// $("#submit_button").on("click",function() {
 
-//     console.log("function called");
-//     var recipe = [];
-//     console.log("recipe length: " + recipe.length);
+function render(data) {
+  console.log("started render");
+  const new_recipe_section = document.createElement("div"); //ADD STYLING CLASS FOR THIS LATER
 
-//     if (!localStorage.recipe_data) {
-//         localStorage.recipe_data = [];
-//     }
-//     else {
-//         recipe = JSON.parse(localStorage.recipe_data);
-//     }
+  const new_recipe_button = document.createElement("button");
+  new_recipe_button.setAttribute("class", "collapsible");
+  console.log(new_recipe_button.classList); //Not Necessary After Testing is Done
+  new_recipe_button.textContent = data.recipe_title;
 
-//     for (var i = 0; i < recipe.length; i++) {
-//         render(recipe[i]);
-//     }
-//     $( "p" ).text( "The DOM is now loaded and can be manipulated." );
+  const new_recipe_content = document.createElement("div");
+  new_recipe_content.setAttribute("class", "content");
 
-//     console.log("hello1");
-//     alert("Recipe added!");
-//     console.log("recipe title: " + recipeTitleEl.value);
-//     var add_recipe = {
-//         "recipe_title": recipeTitleEl.value,
-//         "recipe_info": recipeInfoEl.value,
-//         "ingredient_list": ingredientListEl.value,
-//         "directions": directionsEl.value,
-//     };
-//     recipe.push(add_recipe);
-//     console.log("recipe length: " + recipe.length);
-//     localStorage.recipe_data = JSON.stringify(recipe);
-//     render(add_recipe);
-// });
+  const r_info = document.createElement("textarea");
+  const r_ingredients = document.createElement("textarea");
+  const r_directions = document.createElement("textarea");
+  r_info.textContent = data.recipe_info;
+  r_ingredients.textContent = data.ingredient_list;
+  r_directions.textContent = data.directions;
+
+  new_recipe_content.appendChild(r_info);
+  new_recipe_content.appendChild(r_ingredients);
+  new_recipe_content.appendChild(r_directions);
+
+  new_recipe_section.appendChild(new_recipe_button);
+  new_recipe_section.appendChild(new_recipe_content);
+
+  document.getElementById("recipe_list").prepend(new_recipe_section);
+
+  console.log("finifhsed rendering recipe!");
+}
+
+function load_my_recipes() {
+  console.log("moved to My Recipes. Didn't load render yet!");
+  for (var i = 0; i < recipe.length; i++) {
+    console.log(
+      "i am in the for loop. looping through stored recipes to load them on the page... "
+    );
+    console.log("recipe length: " + recipe.length);
+    render(recipe[i]);
+  }
+
+  console.log("collapsible length anrya" + recipes_display.length);
+
+  for (var i = 0; i < recipes_display.length; i++) {
+    recipes_display[i].addEventListener("click", function () {
+      console.log(recipes_display.length);
+      console.log("clicked!!!!!");
+      var content = this.nextElementSibling;
+      if (content.style.maxHeight) {
+        content.style.maxHeight = null;
+      } else {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  }
+  // return true;
+}
