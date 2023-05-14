@@ -8,7 +8,6 @@ var recipe = [];
 
 $(function () {
   console.log("ready function called");
-  console.log("recipe length: " + recipe.length);
 
   if (!localStorage.recipe_data) {
     localStorage.recipe_data = [];
@@ -16,7 +15,9 @@ $(function () {
     recipe = JSON.parse(localStorage.recipe_data);
   }
 
-  //THIS SHOULD NOT HAPPEN ON MY RECIPES PAGE!! STAY ON NEW RECIPE PAGE
+  console.log(recipe.length);
+
+  //THIS SHOULD HAPPEN ON NEW RECIPE PAGE
   $("#submit_button").on("click", function () {
     console.log("entering submit button click function...");
     alert("Recipe added!");
@@ -30,7 +31,6 @@ $(function () {
     recipe.push(add_recipe);
     console.log("recipe length: " + recipe.length);
     localStorage.recipe_data = JSON.stringify(recipe);
-    // render(add_recipe); //Might be unecessary... it will render alongside everything else later.
 
     recipeTitleEl.value = "";
     recipeInfoEl.value = "";
@@ -73,28 +73,29 @@ function render(data) {
 }
 
 function load_my_recipes() {
-  console.log("moved to My Recipes. Didn't load render yet!");
-  for (var i = 0; i < recipe.length; i++) {
-    console.log(
-      "i am in the for loop. looping through stored recipes to load them on the page... "
-    );
-    console.log("recipe length: " + recipe.length);
-    render(recipe[i]);
-  }
+  $(function () {
+    console.log("moved to My Recipes. Didn't load render yet!");
+    for (var i = 0; i < recipe.length; i++) {
+      console.log(
+        "i am in the for loop. looping through stored recipes to load them on the page... "
+      );
+      console.log("recipe lsength: " + recipe.length);
+      render(recipe[i]);
+    }
 
-  console.log("collapsible length anrya" + recipes_display.length);
+    console.log("collapsible length anrya" + recipes_display.length);
 
-  for (var i = 0; i < recipes_display.length; i++) {
-    recipes_display[i].addEventListener("click", function () {
-      console.log(recipes_display.length);
-      console.log("clicked!!!!!");
-      var content = this.nextElementSibling;
-      if (content.style.maxHeight) {
-        content.style.maxHeight = null;
-      } else {
-        content.style.maxHeight = content.scrollHeight + "px";
-      }
-    });
-  }
-  // return true;
+    for (var i = 0; i < recipes_display.length; i++) {
+      recipes_display[i].addEventListener("click", function () {
+        console.log("clicked!!!!!");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight) {
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+    // return true;
+  });
 }
