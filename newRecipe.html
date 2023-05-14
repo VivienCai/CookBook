@@ -5,61 +5,59 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Create a new recipe</title>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <title>Create New Recipe</title>
   </head>
   <body>
-    <a href="./index.html">back</a>
+    <a href="./test.html">Test</a>
+    <a href="./myRecipes.html">My Recipes</a>
     <h1>New Recipe</h1>
 
-    <form>
-      <!-- WE NEED TO ADD AN ACTION [Form Handler], <form action="/form_handler.php"> -->
-      <div class="input">
+    <!-- <form onsubmit="return false"> -->
+    <div class="input">
+      <textarea
+        class="input_recipe"
+        id="recipe_title"
+        name="recipe_title_name"
+        rows="1"
+        cols="30"
+        placeholder="Recipe Name"
+      ></textarea>
+      <textarea
+        class="input_recipe"
+        id="recipe_info"
+        name="recipe_info_name"
+        rows="4"
+        cols="100"
+        placeholder="Recipe Info (Prep Time, Cook Time, Servings...)"
+      ></textarea>
+      <div>
         <textarea
           class="input_recipe"
-          id="recipe_title"
-          name="recipe_title_name"
-          rows="1"
-          cols="30"
-          placeholder="Recipe Name"
+          id="ingredient_list"
+          name="ingredient_list_name"
+          rows="25"
+          cols="19"
+          placeholder="Ingredients"
         ></textarea>
         <textarea
           class="input_recipe"
-          id="recipe_info"
-          name="recipe_info_name"
-          rows="4"
-          cols="100"
-          placeholder="Recipe Info (Prep Time, Cook Time, Servings...)"
+          id="directions"
+          name="directions_name"
+          rows="25"
+          cols="75"
+          placeholder="Directions"
         ></textarea>
-        <div>
-          <textarea
-            class="input_recipe"
-            id="ingredient_list"
-            name="ingredient_list_name"
-            rows="25"
-            cols="19"
-            placeholder="Ingredients"
-          ></textarea>
-          <textarea
-            class="input_recipe"
-            id="directions"
-            name="directions_name"
-            rows="25"
-            cols="75"
-            placeholder="Directions"
-          ></textarea>
-        </div>
-        <input
-          type="submit"
-          id="submit_button"
-          value="All Done!"
-          onclick="return submit_complete()"
-        />
       </div>
-    </form>
+      <input type="submit" id="submit_button" value="All Done!" />
+      <!-- TESTING CODE REMEMBER TO DELETE AFTER!! -->
+      <div id="div1"></div>
+    </div>
+    <!-- </form> -->
   </body>
 
   <footer id="footer">
     <p>Copyright &copy;2023 Vivien Cai and Athithiya Mohanakumar</p>
   </footer>
-  <script src="script.js"></script>
+  <script src="scripts/add_recipe.js"></script>
 </html>
