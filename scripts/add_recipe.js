@@ -19,7 +19,6 @@ $(function () {
 
   //THIS SHOULD HAPPEN ON NEW RECIPE PAGE
   $("#submit_button").on("click", function () {
-    console.log("entering submit button click function...");
     alert("Recipe added!");
 
     var add_recipe = {
@@ -37,12 +36,12 @@ $(function () {
     ingredientListEl.value = "";
     directionsEl.value = "";
 
-    console.log("reset values. All done on New Recipe Page!!!!");
+    console.log("Reset recipe values.");
   });
 });
 
 function render(data) {
-  console.log("started render");
+  console.log("Started Rendering...");
   const new_recipe_section = document.createElement("div"); //ADD STYLING CLASS FOR THIS LATER
 
   const new_recipe_button = document.createElement("button");
@@ -69,7 +68,7 @@ function render(data) {
 
   document.getElementById("recipe_list").prepend(new_recipe_section);
 
-  console.log("finifhsed rendering recipe!");
+  console.log("Finished rendering recipe!");
 }
 
 function load_my_recipes() {
@@ -79,11 +78,11 @@ function load_my_recipes() {
       console.log(
         "i am in the for loop. looping through stored recipes to load them on the page... "
       );
-      console.log("recipe lsength: " + recipe.length);
+      console.log("recipe length: " + recipe.length);
       render(recipe[i]);
     }
 
-    console.log("collapsible length anrya" + recipes_display.length);
+    console.log("collapsible length array" + recipes_display.length);
 
     for (var i = 0; i < recipes_display.length; i++) {
       recipes_display[i].addEventListener("click", function () {
